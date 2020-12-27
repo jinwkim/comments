@@ -55,7 +55,15 @@ app.get('/comments/:id', (req, res) => {
 });
 
 // PATCH - update one comment
+app.patch('/comments/:id', (req,res) => {
+    const { id } = req.params;
+    const newCommentText = req.body.comment;
 
+    const foundComment = comments.find( c=> c.id === id);
+    foundComment.comment = newCommentText;
+
+    res.redirect('/comments');
+});
 
 // DELETE - destory a comment
 
