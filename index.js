@@ -12,7 +12,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 // data
-const comments = [
+let comments = [
     {
         username: 'Todd',
         comment: 'lol that is funny',
@@ -75,8 +75,16 @@ app.get('/comments/:id/edit', (req, res) => {
     res.render('comments/edit', { comment });
 });
 
+
 // DELETE - destory a comment
-// app.delete('/comments/:')
+app.delete('/comments/:id', (req, res) => {
+    const {id} = req.params;
+
+    // creates a new array without the matching id
+    comments = comments.filter( c=> c.id != id );
+
+    res.redirect('/comments');
+});
 
 
 app.listen(3000, ()=>{

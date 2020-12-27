@@ -11,5 +11,8 @@
     <h2>Here is the comment: <%= comment.comment %></h2>
     <a href="/comments">Back to Index</a>
     <a href="/comments/<%= comment.id %>/edit">Edit Comment</a>
+    <form method="POST" action="/comments/<%= comment.id %>?_method=DELETE">
+        <button>DELETE</button>
+    </form>
 </body>
 </html>
